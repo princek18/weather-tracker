@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather!</title>
+    <link rel="icon" href="https://icons-for-free.com/iconfiles/png/512/cloud+day+forecast+lightning+shine+storm+sun+weather+icon-1320183295537909806.png" type="image/gif" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+  </head>
+  <body>
+    <div class="head">
+      <h2 class="text-center" style="font-size:50px; font-weight:600;">Weather Tracker</h2>
+    </div>
+    <div class="div container" align='center'>
+      <div id="txt" align="center" class="container">
+          <h3 class="text-center" style="font-weight: 700;color:#00ff00;">Enter City Name</h3>
+      </div>
+      <form class="input_city" method="POST">
+        {% csrf_token %}
+        <br>
+        <input id="inpt" type="text" name="city" placeholder="Enter City">
+        <br>
+        <button id="btn" type="submit">
+          Search for weather
+        </button>
+      </form>
+    </div>
+    {% if city and country and time and temp and condition and wind and direction and humidity and feels_l %}
+    <div align="center"class="container box">
+      <img src="{{ icon }}" alt="">
+      <h1>City: {{ name }}</h1>
+      <h1>State: {{ city }}</h1>
+      <h1>Country: {{ country }}</h1>
+      <h1>Time: {{ time }}</h1>
+      <h1>Temperature: {{ temp }} °C</h1>
+      <h1>Feels Like: {{ feels_l }} °C</h1>
+      <h1>Condition: {{ condition }}</h1>
+      <h1>Wind Speed: {{ wind }}kph</h1>
+      <h1>Wind Direction: {{ direction }}</h1>
+      <h1>Humidity: {{ humidity }}%</h1>
+    </div>
+    {% else %}
+    <div align="center" class="container boxx">
+        <img src="{% static 'images/weather.jpeg' %}" style="width: 200px; height:200px;">
+    </div>
+    {% endif %}
+      <div align="center" class="icons">
+        <p style="font-family: 'Baloo Tamma 2', cursive; font-size: 20px;"><strong>Designed by Prince Kumar</strong></p>
+        <table>
+          <tr>
+            <th><a href="https://www.facebook.com/profile.php?id=100004663235882"><i class="fa fa-facebook" style="color:#3b5998;"></i></a></th>
+            <th><a href="https://twitter.com/princek22012330"><i class="fa fa-twitter" style="color:#00acee;"></i></a></th>
+            <th><a href="https://www.instagram.com/princek18/"><i class="fa fa-instagram" style="color:#E1306C;"></i></a></th>
+          </tr>
+        </table>
+      </div>
+  </body>
+</html>
