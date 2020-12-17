@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma-rtl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma-rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav style="border-radius: 5px;" class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url "index" %}">
+        <h4 style="font-family: 'Recursive', sans-serif;">BookTrain</h4>
+      </a>
+        <a style="color: white;" class="nav-link" href="{% url "index" %}">Home</a>
+        <a style="color: white;" class="nav-link" href="{% url "history" %}">Booked Tickets</a>
+    </nav>
+    {% block body %}
+    {% endblock %}
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+  <footer class="fixed-bottom" style="border: 1px solid black; height: 78px; background-color: #102b29; border-radius: 5px;">
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <h5 style="padding: 5px; color: white; font-family: 'Recursive', sans-serif;">Designed by Prince Kumar</h5>
+      </div>
+      </div>
+        <div align="center">
+          <table>
+              <tr>
+                <th style="padding: 10px;"><a href="https://www.facebook.com/profile.php?id=100004663235882"><i class="fa fa-facebook" style="color:#3b5998;"></i></a></th>
+                <th style="padding: 10px;"><a href="https://twitter.com/princek22012330"><i class="fa fa-twitter" style="color:#00acee;"></i></a></th>
+                <th style="padding: 10px;"><a href="https://www.instagram.com/princek18/"><i class="fa fa-instagram" style="color:#E1306C;"></i></a></th>
+              </tr>
+          </table>
+        </div>
+  </footer>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+
+// Get all "navbar-burger" elements
+const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Check if there are any navbar burgers
+if ($navbarBurgers.length > 0) {
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+}
+
+});
+  </script>
+</html>

@@ -1,0 +1,30 @@
+{% extends "Train_app/base.html" %}
+{% block body %}
+{% for i in ticket %}
+<a href="{% url "bookhis" pk=i.Ticket_id %}">
+  <div class="card" style="margin: 20px;">
+  <h5 class="card-header card bg-info text-white">Ticket ID: {{i.Ticket_id}}</h5>
+  <div class="row">
+  <div class="col-sm-6">
+    <div class="card-body">
+      <h5 class="card-title">Train No: {{i.Train_number}}</h5>
+      <h5 class="card-title">Origin: {{i.Origin}}</h5>
+      <h5 class="card-title">Deaparture: {{i.Departure}}</h5>
+      <h5 class="card-title">Date of Journey: {{i.Date}} ({{i.Day}})</h5>
+      <h5 class="card-title">Journey Class: {{i.Class}}</h5>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card-body">
+      <h5 class="card-title">Train Name: {{i.Train_name}}</h5>
+      <h5 class="card-title">Destination: {{i.Destination}}</h5>
+      <h5 class="card-title">Arrival: {{i.Arrival}}</h5>
+      <h5 class="card-title">Travel Time: {{i.Travel_time}}</h5>
+      <h5 class="card-title">Total Fare: ₹ {{i.Price}}</h5>
+    </div>
+  </div>
+  </div>
+  </div>
+</a>
+{% endfor %}
+{% endblock %}

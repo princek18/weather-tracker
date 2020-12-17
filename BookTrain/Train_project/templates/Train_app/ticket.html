@@ -1,0 +1,53 @@
+{% extends 'Train_app/base.html' %}
+{% block body %}
+    <br>
+    <div class="card">
+    <header class="card-header">
+    <h3 class="card-header-title">
+      Journey
+    </h3>
+    </header>
+    <div class="card-content">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="content">
+          <h4>Train No: {{k.0}}</h4>
+          <h4>Train Name: {{k.1}}</h4>
+          <h6>Origin: {{k.2}} ({{k.3}})</h6>
+          <h6>Destination: {{k.4}} ({{k.5}})</h6>
+          <br>
+          <h6>Travel Time: {{k.6}}</h6>
+          <h6>Date of Journey: {{k.14}} ({{k.15}})</h6>
+          <br>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div>
+          <h5>Journey Class: {{classp}}</h5>
+          <br>
+          <h5>Number of Passenger(s): {{number}}</h5>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    {% if form %}
+    <form method="POST">
+    <div class="container">
+    <br>
+    <h5>Passenger Details: </h5>
+    <br>
+    {% csrf_token %}
+    {{ form.management_form }}
+    {% for i in form %}
+    <div class="jumbotron">
+      {{i.as_p}}
+    </div>
+    {% endfor %}
+    <div class="buttons" style="margin-top: 50px;">
+      <button type="submit" class="button is-primary">Continue</button>
+    </div>
+    </div>
+    </form>
+    {% endif %}
+{% endblock %}

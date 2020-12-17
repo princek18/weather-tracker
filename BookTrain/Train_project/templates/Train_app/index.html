@@ -1,0 +1,93 @@
+{% extends 'Train_app/base.html' %}
+{% load static %}
+{% block body %}
+<style media="screen">
+  #image1{
+    margin-top: 40px;
+    width:200px;
+    height:200px;
+  }
+  body{
+    background-image: url("{% static "images/Train_back.jpg" %}");
+    background-size: cover;
+  }
+</style>
+<center>
+<img id="image1" src="{% static "images/indian_rail.png" %}" alt="">
+</center>
+    <div id="back" class="container" style="margin-top: 60px;">
+      <form class="" method="POST">
+        {% csrf_token %}
+        <div class="field">
+          <p class="control">
+            <input class="input" name="origin" type="text" placeholder="Enter Origin Station Code" required>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input class="input" name="destination" type="text" placeholder="Enter Destination Station Code" required>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input name="date" type="date" required>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button class="button is-success">
+              Find Trains
+            </button>
+          </p>
+        </div>
+      </form>
+    </div>
+    <br>
+    <br>
+    {% if b %}
+    <div style="opacity: .85;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Train No</th>
+            <th>Name</th>
+            <th>Origin</th>
+            <th>Dep</th>
+            <th>Destination</th>
+            <th>Arr</th>
+            <th>Journey</th>
+            <th>Su</th>
+            <th>Mo</th>
+            <th>Tu</th>
+            <th>We</th>
+            <th>Th</th>
+            <th>Fr</th>
+            <th>Sa</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in b %}
+        <tr>
+          <form method="POST">
+            <td><a href="{% url 'passView' pk=i.0%}">{{i.0}}</a></td>
+          </form>
+          <td>{{i.1}}</td>
+          <td>{{i.2}}</td>
+          <td>{{i.3}}</td>
+          <td>{{i.4}}</td>
+          <td>{{i.5}}</td>
+          <td>{{i.6}}</td>
+          <td>{{i.7}}</td>
+          <td>{{i.8}}</td>
+          <td>{{i.9}}</td>
+          <td>{{i.10}}</td>
+          <td>{{i.11}}</td>
+          <td>{{i.12}}</td>
+          <td>{{i.13}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+{% endblock %}

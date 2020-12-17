@@ -1,0 +1,63 @@
+{% extends 'Train_app/base.html' %}
+{% block body %}
+    <br>
+    <div class="card">
+  <header class="card-header">
+    <h3 class="card-header-title">
+      Journey
+    </h3>
+  </header>
+  <div class="card-content">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="content">
+          <h4>Train No: {{k.0}}</h4>
+          <h4>Train Name: {{k.1}}</h4>
+          <h6>Origin: {{k.2}} ({{k.3}})</h6>
+          <h6>Destination: {{k.4}} ({{k.5}})</h6>
+          <br>
+          <h6>Travel Time: {{k.6}}</h6>
+          <h6>Date of Journey: {{k.14}} ({{k.15}})</h6>
+          <br>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div>
+          <h5>Select Journey Class:</h5>
+          <form method="POST" %}">
+            {% csrf_token %}
+            <div class="field">
+            <p>
+              <span class="select">
+                <select name="classp">
+                  {% for i in p %}
+                  <option value="{{i}}">{{i}}</option>
+                  {% endfor %}
+                </select>
+              </span>
+            </p>
+          </div>
+        <h5>Select Number of Passengers:</h5>
+          <div class="field">
+          <p>
+            <span class="select">
+              <select name="number">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </span>
+          </p>
+        </div>
+        <div class="buttons" style="margin-top: 50px;">
+          <button type="submit" class="button is-primary">Submit</button>
+        </div>
+        </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
